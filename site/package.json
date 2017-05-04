@@ -1,0 +1,35 @@
+{
+  "name": "app",
+  "version": "0.0.1",
+  "description": "app",
+  "author": "Artem Prudnikov",
+  "contributors": [
+    {
+      "name": "Artem Prudnikov",
+      "email": "logovaser@gmail.com"
+    }
+  ],
+  "dependencies": {
+    "angular": "latest",
+    "angular-ui-router": "latest",
+    "angular-i18n": "latest",
+    "angular-translate": "latest"
+  },
+  "devDependencies": {
+    "bundle-loader": "latest",
+    "css-loader": "latest",
+    "file-loader": "latest",
+    "less": "latest",
+    "less-loader": "latest",
+    "html-minify-loader": "latest",
+    "raw-loader": "latest",
+    "style-loader": "latest",
+    "webpack": "latest",
+    "uglify-js": "git+https://github.com/mishoo/UglifyJS2.git#harmony",
+
+    "mocha": "^3.2.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  }
+}
