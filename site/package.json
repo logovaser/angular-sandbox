@@ -12,8 +12,7 @@
   "dependencies": {
     "angular": "latest",
     "angular-ui-router": "latest",
-    "angular-i18n": "latest",
-    "angular-translate": "latest"
+    "angular-i18n": "latest"
   },
   "devDependencies": {
     "bundle-loader": "latest",

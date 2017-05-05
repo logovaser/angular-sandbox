@@ -2,7 +2,7 @@
  * Created by logov on 28-Apr-17.
  */
 
-export default function ($scope, $http, $translatePartialLoader) {
+export default function ($scope, $http) {
 
     $scope.form = {};
 

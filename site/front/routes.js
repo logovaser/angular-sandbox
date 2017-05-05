@@ -18,21 +18,21 @@ export default function ($stateProvider) {
             url: '/login',
             templateProvider: getTemplateAsync(require("bundle-loader?lazy!./pages/login/base.html")),
             controller: getCtrlAsync(require('bundle-loader?lazy!./pages/login/base'),
-                '$scope', '$http', '$state', '$translatePartialLoader', 'userFactory')
+                '$scope', '$http', '$state', 'userFactory')
         })
         .state({
             name: 'register',
             url: '/register',
             templateProvider: getTemplateAsync(require("bundle-loader?lazy!./pages/register/base.html")),
             controller: getCtrlAsync(require('bundle-loader?lazy!./pages/register/base'),
-                '$scope', '$http', '$translatePartialLoader', 'userFactory')
+                '$scope', '$http', 'userFactory')
         })
         .state({
             name: 'cabinet',
             url: '/cabinet',
             templateProvider: getTemplateAsync(require("bundle-loader?lazy!./pages/cabinet/base.html")),
             controller: getCtrlAsync(require('bundle-loader?lazy!./pages/cabinet/base'),
-                '$scope', '$translatePartialLoader'),
+                '$scope'),
             onEnter: ['$state', 'userFactory', function ($state, userFactory) {
                 redirectToLoginIfNotAuth($state, userFactory)
             }]
@@ -42,6 +42,6 @@ export default function ($stateProvider) {
             url: '/about',
             templateProvider: getTemplateAsync(require("bundle-loader?lazy!./pages/about/base.html")),
             controller: getCtrlAsync(require('bundle-loader?lazy!./pages/about/base'),
-                '$scope', '$translatePartialLoader')
+                '$scope')
         });
 }
