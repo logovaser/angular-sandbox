@@ -3,7 +3,6 @@
  */
 
 export default function ($scope, $translatePartialLoader) {
-    console.log('hello page lazy loaded module');
 
     $translatePartialLoader.addPart('about');
 

@@ -8,9 +8,11 @@
 </head>
 <body ng-app="myApp">
 <header ng-controller="headerCtrl">
-    <a ui-sref="home">Home</a>
-    <a ui-sref="about">About</a>
-    <a ui-sref="component">Comp</a>
+    <a ui-sref="home">{{ 'Home'|translate }}</a>
+    <a ui-sref="login">{{ 'Login'|translate }}</a>
+    <a ui-sref="register">{{ 'Register'|translate }}</a>
+    <a ui-sref="about">{{ 'About'|translate }}</a>
+    <a ui-sref="cabinet">{{ 'Cabinet'|translate }}</a>
 
     <select ng-model="currentLanguage">
         <option ng-repeat="lang in languages" ng-value="lang.value" ng-bind="lang.display"></option>

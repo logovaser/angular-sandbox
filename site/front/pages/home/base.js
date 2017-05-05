@@ -3,8 +3,8 @@
  */
 
 
-export default function ($scope) {
+export default function($scope) {
 
-
+    $scope.hello = 'Hi there';
 
 }
