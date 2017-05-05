@@ -4,9 +4,9 @@
 
 import './base.less'
 
-export default function (app) {
+export default function ($compileProvider) {
 
-    app.compileProvider.component('myPane', {
+    $compileProvider.component('myPane', {
         bindings: {
             title: '@',
             text: '@'

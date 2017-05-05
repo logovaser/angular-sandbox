@@ -10,10 +10,10 @@ export function getTemplateAsync(load) {
     })]
 }
 
-export function regComponentAsync(app, load) {
+export function regComponentAsync($compileProvider, load) {
     return ['$q', $q => $q(res => {
         load(data => {
-            data.default(app);
+            data.default($compileProvider);
             res()
         });
     })]

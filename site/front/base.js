@@ -13,8 +13,7 @@ myApp.config(['$compileProvider', '$stateProvider', '$locationProvider', functio
     $location.hashPrefix('');
     $location.html5Mode(true);
     $compile.debugInfoEnabled(false);
-    myApp.compileProvider = $compile;
-    Routes(myApp, $state);
+    Routes($compile, $state);
 }]);
 
 myApp.factory('userFactory', userFactory);

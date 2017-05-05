@@ -5,7 +5,7 @@
 import {getTemplateAsync, getCtrlAsync, regComponentAsync} from './asyncLoaders'
 import {redirectToLoginIfNotAuth} from './redirects'
 
-export default function (app, $stateProvider) {
+export default function ($compileProvider, $stateProvider) {
     $stateProvider
         .state({
             name: 'home',
@@ -14,7 +14,7 @@ export default function (app, $stateProvider) {
             controller: getCtrlAsync(require('bundle-loader?lazy!./pages/home/base'),
                 '$rootScope', '$scope'),
             resolve: {
-                card: regComponentAsync(app, require('bundle-loader?lazy!./comp/card/base'))
+                card: regComponentAsync($compileProvider, require('bundle-loader?lazy!./comp/card/base'))
             }
         })
         .state({
