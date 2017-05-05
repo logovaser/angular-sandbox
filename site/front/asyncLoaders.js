@@ -10,6 +10,15 @@ export function getTemplateAsync(load) {
     })]
 }
 
+export function regComponentAsync(app, load) {
+    return ['$q', $q => $q(res => {
+        load(data => {
+            data.default(app);
+            res()
+        });
+    })]
+}
+
 export function getCtrlAsync(load, ...deps) {
     return [...deps, function (...args) {
         load(function (file) {
@@ -19,16 +28,4 @@ export function getCtrlAsync(load, ...deps) {
             });
         });
     }]
-}
-
-export function redirectToLoginIfNotAuth($state, userFactory) {
-    let auth = userFactory.isAuthenticated();
-    if (auth) auth.then(() => {
-        },
-        () => {
-            $state.go('login')
-        }).catch(() => {
-        $state.go('login')
-    });
-    else $state.go('login');
 }

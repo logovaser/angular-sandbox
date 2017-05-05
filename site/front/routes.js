@@ -2,16 +2,20 @@
  * Created by logov on 05-May-17.
  */
 
-import {getTemplateAsync, getCtrlAsync, redirectToLoginIfNotAuth} from './routesHelper'
+import {getTemplateAsync, getCtrlAsync, regComponentAsync} from './asyncLoaders'
+import {redirectToLoginIfNotAuth} from './redirects'
 
-export default function ($stateProvider) {
+export default function (app, $stateProvider) {
     $stateProvider
         .state({
             name: 'home',
             url: '/',
             templateProvider: getTemplateAsync(require('bundle-loader?lazy!./pages/home/base.html')),
             controller: getCtrlAsync(require('bundle-loader?lazy!./pages/home/base'),
-                '$scope')
+                '$rootScope', '$scope'),
+            resolve: {
+                card: regComponentAsync(app, require('bundle-loader?lazy!./comp/card/base'))
+            }
         })
         .state({
             name: 'login',
