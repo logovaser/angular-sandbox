@@ -1,3 +1,8 @@
-<div class="card-list">
-    <my-pane title="Hello, world" text="This is a cool Single Page App."></my-pane>
+<div class="container">
+    <div class="row">
+        <div ng-repeat="card in cards track by card.id" class="col-xs-12 col-sm-6">
+            <card heading="{{card.heading}}" text="{{card.text}}" img-src="{{card.src}}"
+                  class="well"></card>
+        </div>
+    </div>
 </div>

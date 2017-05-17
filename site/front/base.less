@@ -23,10 +23,10 @@ body {
 header {
   .flex-display();
   .justify-content(space-around);
-  box-shadow: @colDark 0 0 10px 0;
   height: 50px;
 
   background: @colDark;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px 0;
   color: @colLight;
 }
 
@@ -46,17 +46,18 @@ header {
 }
 
 ui-view {
-  .flex-grow(1);
+  .flex(1);
+  overflow: auto;
   padding: 15px 5px 5px 5px;
 }
 
 footer {
   .flex-display();
   .justify-content(space-around);
-  box-shadow: @colDark 0 0 10px 0;
   height: 50px;
 
   background: @colDark;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 0 10px 0;
   color: @colLight;
 }
 

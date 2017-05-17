@@ -8,11 +8,10 @@ import controller from './ctrl'
 
 export default function ($compileProvider) {
 
-    $compileProvider.component('card', {
+    $compileProvider.component('camera', {
         bindings: {
-            heading: '@',
-            text: '@',
-            imgSrc: '@'
+            changeSourceBtn: '<',
+            chooseSourceBtn: '<'
         },
         template,
         controller

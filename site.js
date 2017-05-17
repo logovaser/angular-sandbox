@@ -6,7 +6,7 @@ var express = require('express'),
     path = require('path'),
     router = express.Router();
 
-router.get(['/', '/login', '/register', '/about', '/cabinet'], function (req, res) {
+router.get(['/', '/login', '/register', '/about', '/cabinet', '/camera_test'], function (req, res) {
     res.sendFile(path.join(__dirname + '/site/public/index.html'))
 });
 

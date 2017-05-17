@@ -2,10 +2,21 @@
  * Created by logov on 05-May-17.
  */
 
+import depLoad from './dependencyLoader'
+
 export function getTemplateAsync(load) {
     return ['$q', $q => $q(res => {
         load(function (file) {
             res(file);
+        });
+    })]
+}
+
+export function regModuleAsync(load) {
+    return ['$q', '$ocLazyLoad', ($q, $ocLazyLoad) => $q(res => {
+        load(data => {
+            $ocLazyLoad.inject(data);
+            res();
         });
     })]
 }

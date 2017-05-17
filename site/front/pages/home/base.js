@@ -3,9 +3,9 @@
  */
 
 import './base.less'
+import template from './base.html'
+import controller from './ctrl'
 
-export default function($scope) {
-
-
-    $scope.hello = 'Hi there';
+export default function ($compileProvider) {
+    $compileProvider.component('home', {template, controller});
 }

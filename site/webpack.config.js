@@ -31,6 +31,13 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.css$/,
+                use: ['style-loader', {
+                    loader: 'css-loader',
+                    // options: {minimize: true}
+                }]
+            },
+            {
                 test: /\.less$/,
                 use: ['style-loader', {
                     loader: 'css-loader',
