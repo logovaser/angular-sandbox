@@ -2,7 +2,7 @@
  * Created by logov on 17-May-17.
  */
 
-export default ['$scope', '$uibModal', '$ocLazyLoad', function ($scope, $uibModal) {
+export default ['$scope', '$uibModal', function ($scope, $uibModal) {
 
     $scope.hello = 'Hi there';
 

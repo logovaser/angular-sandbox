@@ -6,6 +6,6 @@ import './base.less'
 import template from './base.html'
 import controller from './ctrl'
 
-export default function ($compileProvider) {
-    $compileProvider.component('home', {template, controller});
+export default function homePage($compileProvider) {
+    $compileProvider.component('homePage', {template, controller});
 }

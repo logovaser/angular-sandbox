@@ -23,9 +23,9 @@ module.exports = {
             }
         }),
         // new webpack.optimize.UglifyJsPlugin({
-        //     compress: {warnings: true},
+        //     // compress: {warnings: true},
         //     comments: false,
-        //     sourceMap: true
+        //     // sourceMap: true
         // })
     ],
     module: {

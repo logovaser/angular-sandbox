@@ -2,7 +2,8 @@
  * Created by logov on 28-Apr-17.
  */
 
-export default function ($scope) {
+import template from './base.html'
 
-
+export default function cameraTestPage($compileProvider) {
+    $compileProvider.component('cameraTestPage', {template});
 }

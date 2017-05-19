@@ -2,16 +2,9 @@
  * Created by logov on 28-Apr-17.
  */
 
-export default function ($scope, $http, $state, userFactory) {
+import template from './base.html'
+import controller from './ctrl'
 
-    $scope.form = {};
-
-    $scope.submit = function () {
-        $http.post('/auth/login', $scope.form).then(res => {
-            let data = res.data;
-            if (data.type === 'success') userFactory.setToken(data.token);
-            $state.go('cabinet');
-        });
-    }
-
+export default function loginPage($compileProvider) {
+    $compileProvider.component('loginPage', {template, controller});
 }

@@ -5,10 +5,10 @@
 export default ['$scope', function ($scope) {
     let vm = this;
 
-    $scope.triggerTest = function () {
-        $scope.$emit('testEvent', {kek: 'kek'})
+    vm.$onInit = () => {
     };
 
-    vm.$onInit = () => {
+    $scope.triggerTest = function () {
+        $scope.$emit('testEvent', {kek: 'kek'})
     };
 }]

@@ -2,60 +2,49 @@
  * Created by logov on 05-May-17.
  */
 
-import {getTemplateAsync, getCtrlAsync, regComponentAsync, regModuleAsync} from './asyncLoaders'
+import {regComponentAsync, regModuleAsync} from './asyncLoaders'
 import {redirectToLoginIfNotAuth} from './redirects'
 
 export default function ($compileProvider, $stateProvider) {
     $stateProvider
         .state('home', {
             url: '/',
-            component: 'home',
+            component: 'homePage',
             resolve: {
                 uib: regModuleAsync(require('bundle-loader?lazy!angular-ui-bootstrap')),
-                home: regComponentAsync($compileProvider, require('bundle-loader?lazy!./pages/home/base')),
                 card: regComponentAsync($compileProvider, require('bundle-loader?lazy!./comp/card/base')),
-                eventFired: regComponentAsync($compileProvider, require('bundle-loader?lazy!./modals/eventFired/base'))
+                eventFired: regComponentAsync($compileProvider, require('bundle-loader?lazy!./modals/eventFired/base')),
+                home: regComponentAsync($compileProvider, require('bundle-loader?lazy!./pages/home/base')),
             }
         })
-        .state({
-            name: 'login',
+        .state('login', {
             url: '/login',
-            templateProvider: getTemplateAsync(require("bundle-loader?lazy!./pages/login/base.html")),
-            controller: getCtrlAsync(require('bundle-loader?lazy!./pages/login/base'),
-                '$scope', '$http', '$state', 'userFactory')
-        })
-        .state({
-            name: 'register',
-            url: '/register',
-            templateProvider: getTemplateAsync(require("bundle-loader?lazy!./pages/register/base.html")),
-            controller: getCtrlAsync(require('bundle-loader?lazy!./pages/register/base'),
-                '$scope', '$http', 'userFactory')
-        })
-        .state({
-            name: 'cabinet',
-            url: '/cabinet',
-            templateProvider: getTemplateAsync(require("bundle-loader?lazy!./pages/cabinet/base.html")),
-            controller: getCtrlAsync(require('bundle-loader?lazy!./pages/cabinet/base'),
-                '$scope'),
+            component: 'loginPage',
             resolve: {
-                auth: redirectToLoginIfNotAuth
+                login: regComponentAsync($compileProvider, require('bundle-loader?lazy!./pages/login/base')),
             }
         })
-        .state({
-            name: 'about',
-            url: '/about',
-            templateProvider: getTemplateAsync(require("bundle-loader?lazy!./pages/about/base.html")),
-            controller: getCtrlAsync(require('bundle-loader?lazy!./pages/about/base'),
-                '$scope')
-        })
-        .state({
-            name: 'cameraTest',
-            url: '/camera_test',
-            templateProvider: getTemplateAsync(require("bundle-loader?lazy!./pages/cameraTest/base.html")),
-            controller: getCtrlAsync(require('bundle-loader?lazy!./pages/cameraTest/base'),
-                '$scope'),
+        .state('register', {
+            url: '/register',
+            component: 'registerPage',
             resolve: {
-                card: regComponentAsync($compileProvider, require('bundle-loader?lazy!./comp/camera/base'))
+                register: regComponentAsync($compileProvider, require('bundle-loader?lazy!./pages/register/base')),
+            }
+        })
+        .state('cabinet', {
+            url: '/cabinet',
+            component: 'cabinetPage',
+            resolve: {
+                auth: redirectToLoginIfNotAuth,
+                cabinet: regComponentAsync($compileProvider, require('bundle-loader?lazy!./pages/cabinet/base')),
+            }
+        })
+        .state('cameraTest', {
+            url: '/camera_test',
+            component: 'cameraTestPage',
+            resolve: {
+                camera: regComponentAsync($compileProvider, require('bundle-loader?lazy!./comp/camera/base')),
+                cameraTest: regComponentAsync($compileProvider, require('bundle-loader?lazy!./pages/cameraTest/base')),
             }
         });
 }

@@ -4,7 +4,7 @@
 
 import template from './base.html'
 
-export default function ($compileProvider) {
+export default function eventFired($compileProvider) {
 
     $compileProvider.component('eventFired', {
         bindings: {

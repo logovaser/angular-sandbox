@@ -6,7 +6,7 @@ import './base.less'
 import template from './base.html'
 import controller from './ctrl'
 
-export default function ($compileProvider) {
+export default function camera($compileProvider) {
 
     $compileProvider.component('camera', {
         bindings: {
