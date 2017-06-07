@@ -7,9 +7,7 @@ var express = require('express'),
     morgan = require('morgan'),
     path = require('path'),
     app = express(),
-    siteRouter = require('./site'),
-    db = require('./db'),
-    auth = require('./auth');
+    db = require('./db');
 
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -25,9 +23,10 @@ app.use(function (req, res, next) {
 
 
 db.then(function () {
-    app.use('/auth', auth);
-    app.use('/', siteRouter);
-    app.use(express.static(path.join(__dirname, 'site/public')));
+    app.use('/auth', require('./api/auth'));
+    // app.use('/api', require('./api/posts'));
+    app.use('/', require('./site'));
+    app.use(express.static(path.join(__dirname, '/../site/public')));
 });
 
 

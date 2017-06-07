@@ -1,0 +1,5 @@
+
+# MongoDB
+mongod --dbpath="D:\mongo"
+
+mongod --dbpath="/media/logov/Data/mongo"

@@ -7,7 +7,7 @@ var express = require('express'),
     router = express.Router();
 
 router.get(['/', '/login', '/register', '/about', '/cabinet', '/camera_test'], function (req, res) {
-    res.sendFile(path.join(__dirname + '/site/public/index.html'))
+    res.sendFile(path.join(__dirname + '/../site/public/index.html'))
 });
 
 module.exports = router;
