@@ -12,7 +12,8 @@ export default function ($compileProvider, $stateProvider) {
             component: 'homePage',
             resolve: {
                 uib: regModuleAsync(require('bundle-loader?lazy!angular-ui-bootstrap')),
-                card: regComponentAsync($compileProvider, require('bundle-loader?lazy!./comp/card/base')),
+                tile: regComponentAsync($compileProvider, require('bundle-loader?lazy!./comp/tile/base')),
+                // card: regComponentAsync($compileProvider, require('bundle-loader?lazy!./comp/card/base')),
                 eventFired: regComponentAsync($compileProvider, require('bundle-loader?lazy!./modals/eventFired/base')),
                 home: regComponentAsync($compileProvider, require('bundle-loader?lazy!./pages/home/base')),
             }
