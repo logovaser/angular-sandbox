@@ -2,7 +2,9 @@
  * Created by logov on 28-Apr-17.
  */
 
-export default function ($scope, $translatePartialLoader) {
+import template from './base.html'
 
+export default function cabinetPage($compileProvider) {
 
+    $compileProvider.component('cabinetPage', {template});
 }

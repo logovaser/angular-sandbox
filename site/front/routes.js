@@ -2,46 +2,50 @@
  * Created by logov on 05-May-17.
  */
 
-import {getTemplateAsync, getCtrlAsync, redirectToLoginIfNotAuth} from './routesHelper'
+import {regComponentAsync, regModuleAsync} from './asyncLoaders'
+import {redirectToLoginIfNotAuth} from './redirects'
 
-export default function ($stateProvider) {
+export default function ($compileProvider, $stateProvider) {
     $stateProvider
-        .state({
-            name: 'home',
+        .state('home', {
             url: '/',
-            templateProvider: getTemplateAsync(require('bundle-loader?lazy!./pages/home/base.html')),
-            controller: getCtrlAsync(require('bundle-loader?lazy!./pages/home/base'),
-                '$scope')
+            component: 'homePage',
+            resolve: {
+                uib: regModuleAsync(require('bundle-loader?lazy!angular-ui-bootstrap')),
+                tile: regComponentAsync($compileProvider, require('bundle-loader?lazy!./comp/tile/base')),
+                // card: regComponentAsync($compileProvider, require('bundle-loader?lazy!./comp/card/base')),
+                eventFired: regComponentAsync($compileProvider, require('bundle-loader?lazy!./modals/eventFired/base')),
+                home: regComponentAsync($compileProvider, require('bundle-loader?lazy!./pages/home/base')),
+            }
         })
-        .state({
-            name: 'login',
+        .state('login', {
             url: '/login',
-            templateProvider: getTemplateAsync(require("bundle-loader?lazy!./pages/login/base.html")),
-            controller: getCtrlAsync(require('bundle-loader?lazy!./pages/login/base'),
-                '$scope', '$http', '$state', '$translatePartialLoader', 'userFactory')
+            component: 'loginPage',
+            resolve: {
+                login: regComponentAsync($compileProvider, require('bundle-loader?lazy!./pages/login/base')),
+            }
         })
-        .state({
-            name: 'register',
+        .state('register', {
             url: '/register',
-            templateProvider: getTemplateAsync(require("bundle-loader?lazy!./pages/register/base.html")),
-            controller: getCtrlAsync(require('bundle-loader?lazy!./pages/register/base'),
-                '$scope', '$http', '$translatePartialLoader', 'userFactory')
+            component: 'registerPage',
+            resolve: {
+                register: regComponentAsync($compileProvider, require('bundle-loader?lazy!./pages/register/base')),
+            }
         })
-        .state({
-            name: 'cabinet',
+        .state('cabinet', {
             url: '/cabinet',
-            templateProvider: getTemplateAsync(require("bundle-loader?lazy!./pages/cabinet/base.html")),
-            controller: getCtrlAsync(require('bundle-loader?lazy!./pages/cabinet/base'),
-                '$scope', '$translatePartialLoader'),
-            onEnter: ['$state', 'userFactory', function ($state, userFactory) {
-                redirectToLoginIfNotAuth($state, userFactory)
-            }]
+            component: 'cabinetPage',
+            resolve: {
+                auth: redirectToLoginIfNotAuth,
+                cabinet: regComponentAsync($compileProvider, require('bundle-loader?lazy!./pages/cabinet/base')),
+            }
         })
-        .state({
-            name: 'about',
-            url: '/about',
-            templateProvider: getTemplateAsync(require("bundle-loader?lazy!./pages/about/base.html")),
-            controller: getCtrlAsync(require('bundle-loader?lazy!./pages/about/base'),
-                '$scope', '$translatePartialLoader')
+        .state('cameraTest', {
+            url: '/camera_test',
+            component: 'cameraTestPage',
+            resolve: {
+                camera: regComponentAsync($compileProvider, require('bundle-loader?lazy!./comp/camera/base')),
+                cameraTest: regComponentAsync($compileProvider, require('bundle-loader?lazy!./pages/cameraTest/base')),
+            }
         });
 }

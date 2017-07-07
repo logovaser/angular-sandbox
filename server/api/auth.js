@@ -7,7 +7,7 @@ const SECRET_KEY = 'SuperSecretKey';
 var express = require('express'),
     router = express.Router(),
     jwt = require('jsonwebtoken'),
-    User = require('./models/User'),
+    User = require('../schemas/User'),
     bcrypt = require('bcrypt');
 
 

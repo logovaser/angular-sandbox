@@ -23,13 +23,20 @@ module.exports = {
             }
         }),
         // new webpack.optimize.UglifyJsPlugin({
-        //     compress: {warnings: true},
+        //     // compress: {warnings: true},
         //     comments: false,
-        //     sourceMap: true
+        //     // sourceMap: true
         // })
     ],
     module: {
         rules: [
+            {
+                test: /\.css$/,
+                use: ['style-loader', {
+                    loader: 'css-loader',
+                    // options: {minimize: true}
+                }]
+            },
             {
                 test: /\.less$/,
                 use: ['style-loader', {

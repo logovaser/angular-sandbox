@@ -4,19 +4,22 @@
 
 export default ['$http', function ($http) {
 
-    let getToken = () => sessionStorage.getItem('token');
+    let getToken = () => sessionStorage.token;
     let setToken = function (token) {
-        sessionStorage.setItem('token', token);
-        sessionStorage.setItem('isAuthenticated', true);
+        sessionStorage.token = token;
+        sessionStorage.isAuthenticated = 'true';
     };
 
     let isAuthenticated = function () {
-        if (!sessionStorage.getItem('isAuthenticated')) return false;
-        return $http.post('/auth/check', {token: getToken()}).then(
-            res => sessionStorage.setItem('isAuthenticated', res.type === 'success'),
+        if (!(sessionStorage.isAuthenticated === 'true')) return false;
+        return $http.post('/auth/check', {token: sessionStorage.token}).then(
+            res => {
+                sessionStorage.isAuthenticated = res.data.type === 'success';
+            },
             err => {
-                sessionStorage.setItem('isAuthenticated', false);
+                sessionStorage.isAuthenticated = 'false';
                 throw err;
+
             });
     };
 
